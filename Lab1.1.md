@@ -58,7 +58,6 @@ Side note, some of my peers used 'nmtui' to configure their IP address. I mean, 
 4. Configure the interfaces. We will use the following commands to edit in vyOS:
 configure
 set interfaces ethernet (interface) description (description)
-and also
 set interfaces ethernet (interface) address (IP address/mask)
 commit
 save
@@ -68,7 +67,22 @@ Looks good to me.
 5. Configure gateways and DNS.
 ![{30C8984A-31A5-455D-9801-99B26FC97AB8}](https://github.com/user-attachments/assets/634c2493-2463-430c-9eee-08d9d1e98171)
 Now we can ping google!
-6. Remember to take a snapshot. SPLASH!
+6. Now we configure for NAT forwarding.
+configure
+set nat source rule 10 description "NAT FROM DMZ to WAN"
+set nat source rule 10 outbound-interface eth0
+set nat source rule 10 source address 172.16.50.0/29
+set nat source rule 10 translation address masquerade
+commit
+save
+7. Now configure for DNS forwarding.
+configure
+set service dns forwarding listen-address 172.16.50.2
+set service dns forwarding all-from 172.16.50.0/19
+set service dns forwarding system
+commit
+save
+8. Remember to take a snapshot. SPLASH!
 
 #### Next, we'll set up web01. Here's a checklist to follow:
 
@@ -77,4 +91,18 @@ Now we can ping google!
 3. Set an IP address and hostname. NOW we will be using 'nmtui'
 ![{EB8806EF-7CE6-4B33-92C7-1190B6509F92}](https://github.com/user-attachments/assets/06f33860-a7be-4bc4-8870-2e94cc73bfd2)
 ![{A055DABE-9FE9-4A26-9731-88AA77E98EEF}](https://github.com/user-attachments/assets/2234c184-5078-40d6-bda4-cdaadbb8fac6)
+4. Add a user and set a password. Use commands 'adduser' and 'passwd'
+5. Give the user sudo privileges using 'sudo usermod -aG wheel'
+6. Now we will configure httpd. First, we need to install it using 'sudo yum install httpd -y'
+![{41E5CCB1-2B6F-4072-AA87-C81565C062DF}](https://github.com/user-attachments/assets/818a2bbd-b864-4006-9d04-1a434d454146)
+Looking good!
+7. Now we will add the ports 80 and 443 for our server.
+![{7122EABB-CAAB-43BC-B933-5A874F30C640}](https://github.com/user-attachments/assets/83a13da5-11e0-4868-abdd-e918ed94b678)
+8. Remember to take a snapshot. SPLASH!
 
+#### Now we will set up log01. Here's a checklist to follow:
+1. Make sure the proper Network Adapter is connected.
+2. Set up the IP address and hostname using 'nmtui'
+3. Add a user and set a password. Use commands 'adduser' and 'passwd'
+4. Give the user sudo privileges using 'sudo usermod -aG wheel'
+5. Take a snapshot. SPLASH!
