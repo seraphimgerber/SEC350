@@ -52,6 +52,7 @@ Then update using 'sudo netplan try'. If there are no errors, apply the settings
 
 Much better. Now we can connect to the internet!
 Side note, some of my peers used 'nmtui' to configure their IP address. I mean, whatever is easier for you.
+
 9. Remember to take a snapshot. SPLASH!
 
 #### Now, let's set up fw01. Here's a checklist to follow:
@@ -73,6 +74,7 @@ exit
 ![{0E3ED01A-F289-43E9-9179-A4FC674DB96F}](https://github.com/user-attachments/assets/c57e878d-7963-4c8f-a3d0-115e0d23ca90)
 
 Looks good to me.
+
 5. Configure gateways and DNS.
 
 ![{30C8984A-31A5-455D-9801-99B26FC97AB8}](https://github.com/user-attachments/assets/634c2493-2463-430c-9eee-08d9d1e98171)
@@ -111,6 +113,7 @@ save
 ![{41E5CCB1-2B6F-4072-AA87-C81565C062DF}](https://github.com/user-attachments/assets/818a2bbd-b864-4006-9d04-1a434d454146)
 
 Looking good!
+
 9. Now we will add the ports 80 and 443 for our server.
 
 ![{7122EABB-CAAB-43BC-B933-5A874F30C640}](https://github.com/user-attachments/assets/83a13da5-11e0-4868-abdd-e918ed94b678)
