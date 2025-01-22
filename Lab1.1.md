@@ -41,8 +41,7 @@ Configure as rsyslog server
 7. Double check that the static IP address matches the assigned IP using 'ip a'
 ![{60D370A3-724B-4778-9603-5F1B1B8A9B4D}](https://github.com/user-attachments/assets/b6c5e5e4-3719-4613-8d15-181d31ee07da)
 As you can see, there's no IP address assigned. Here's how to fix that:
-![{CA675A1E-8C7B-4859-80F7-5A3F38D908A3}](https://github.com/user-attachments/assets/335bdfc5-3528-464c-ba09-128e3e4799cf)
-![{1C598D57-47B6-432C-B5FB-9CF4E63CCA9B}](https://github.com/user-attachments/assets/34406324-2c9d-4d26-9874-070400a2f2ce)
+![{51869229-C30E-42AD-954C-270AB8248293}](https://github.com/user-attachments/assets/7c28690e-8007-4211-a15d-675deb21f989)
 Then update using 'sudo netplan try'. If there are no errors, apply the settings!
 ![{07AED6FF-52CF-42EC-B8EC-F4B7EF7215FA}](https://github.com/user-attachments/assets/c6e05434-12a5-4557-badf-63106335a468)
 Much better. Now we can connect to the internet!
@@ -105,4 +104,6 @@ Looking good!
 2. Set up the IP address and hostname using 'nmtui'
 3. Add a user and set a password. Use commands 'adduser' and 'passwd'
 4. Give the user sudo privileges using 'sudo usermod -aG wheel'
-5. Take a snapshot. SPLASH!
+5. Enable the ports for rsyslog using 'sudo firewall-cmd --zone=public --permanent --add-port=514/tcp' and do the same for udp
+6. Take a snapshot. SPLASH!
+
