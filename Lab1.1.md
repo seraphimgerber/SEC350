@@ -81,6 +81,7 @@ Looks good to me.
 
 Now we can ping google!
 6. Now we configure for NAT forwarding.
+
 configure
 set nat source rule 10 description "NAT FROM DMZ to WAN"
 set nat source rule 10 outbound-interface eth0
@@ -88,13 +89,16 @@ set nat source rule 10 source address 172.16.50.0/29
 set nat source rule 10 translation address masquerade
 commit
 save
+
 7. Now configure for DNS forwarding.
+
 configure
 set service dns forwarding listen-address 172.16.50.2
 set service dns forwarding all-from 172.16.50.0/19
 set service dns forwarding system
 commit
 save
+
 8. Remember to take a snapshot. SPLASH!
 
 #### Next, we'll set up web01. Here's a checklist to follow:
