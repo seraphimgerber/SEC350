@@ -11,6 +11,7 @@ Let's do the same for web01:
 ![image](https://github.com/user-attachments/assets/af054c51-719e-4b87-8ca8-e81990d56d74)
 
 And log01:
+
 ![image](https://github.com/user-attachments/assets/859ed940-22a4-4ea8-a217-edbb3f7dad64)
 
 Remember to restart rsyslog afterwards.
