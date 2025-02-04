@@ -11,9 +11,12 @@ So to start off, we are going to set up mgmt01 like we did for the other VMs ear
 ![image](https://github.com/user-attachments/assets/f9f3ce18-7c5f-4d8d-afb2-21d768d26509)
 3. sudo netplan try
 ![image](https://github.com/user-attachments/assets/a3fff228-908a-4569-a2e9-b2332fc5b30d)
-Yay! It works.
-4. Change the default password and add an administrative user.
-![image](https://github.com/user-attachments/assets/652d9679-cfbe-44b8-b04a-d4636f36e832)
-All that good stuff.
-5. Now we have to add a NAT source rule for DMZ
 
+Yay! It works.
+5. Change the default password and add an administrative user.
+![image](https://github.com/user-attachments/assets/652d9679-cfbe-44b8-b04a-d4636f36e832)
+
+All that good stuff.
+6. Now we have to add a NAT source rule for DMZ. I should've done this earlier.
+
+7. Finally, we need to install remote desktop. First, open Chrome and log in.
