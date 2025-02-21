@@ -4,7 +4,7 @@
 
 With all my cyber classes, I keep forgetting which is which in terms of labs and VMs. But for this one, I changed all the usernames and passwords from the default. This is a reminder to myself.
 
-So to start off, we are going to set up mgmt01 like we did for the other VMs earlier. This one is xubuntu. You know the drill...
+So to start off, we are going to set up mgmt01 like we did for the other VMs earlier. This one is xubuntu. we also have to access it using Chrome Remote Desktop. You know the drill...
 1. Change the network adapter to LAN.
 
 ![image](https://github.com/user-attachments/assets/e5361029-7fdf-4e18-a7f1-908c7a5e3310)
