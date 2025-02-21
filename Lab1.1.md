@@ -53,6 +53,8 @@ Then update using 'sudo netplan try'. If there are no errors, apply the settings
 Much better. Now we can connect to the internet!
 Side note, some of my peers used 'nmtui' to configure their IP address. I mean, whatever is easier for you.
 
+Also, I had issues configuring the routes using the GUI, so I added the routes in the network configuration file. 
+
 9. Remember to take a snapshot. SPLASH!
 
 #### Now, let's set up fw01. Here's a checklist to follow:
