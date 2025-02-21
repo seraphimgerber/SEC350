@@ -44,7 +44,7 @@ Configure as rsyslog server
 
 As you can see, there's no IP address assigned. Here's how to fix that:
 
-![{51869229-C30E-42AD-954C-270AB8248293}](https://github.com/user-attachments/assets/7c28690e-8007-4211-a15d-675deb21f989)
+![image](https://github.com/user-attachments/assets/c5d934d5-6639-4baf-a4f8-d66fd5e6a9eb)
 
 Then update using 'sudo netplan try'. If there are no errors, apply the settings!
 
