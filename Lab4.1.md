@@ -49,3 +49,28 @@ save\
 exit
 
 Okay, now for the moment of truth... let's see if this works!
+
+Okay, it didn't work. I've done a lot of troubleshooting, but I can't seem to figure it out. We are gonna come back to this later.
+
+For deliverable 3, we have to set some more firewall and zone rules. Here you go:
+
+set firewall name LAN-to-DMZ default-action drop\
+set firewall name LAN-to-DMZ enable-default-log\
+set firewall name DMZ-to-LAN default-action drop\
+set firewall name DMZ-to-LAN enable-default-log\
+commit\
+save\
+exit
+
+Now the zones.
+set zone-policy zone DMZ from LAN firewall name LAN-to-DMZ\
+set zone-policy zone LAN from DMZ firewall name DMZ-to-LAN\
+set zone-policy zone DMZ interface eth1\
+set zone-policy zone LAN interface eth2\
+commit\
+save\
+exit
+
+
+
+
