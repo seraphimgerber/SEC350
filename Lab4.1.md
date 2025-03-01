@@ -18,7 +18,8 @@ set zone-policy zone DMZ from WAN firewall name WAN-to-DMZ\
 commit\
 save
 
-Wow, that was a lot just for the first deliverable. The professor gave those to us, so the next ones are on our own. We have to figure out how to append rule 10 to the WAN-to-DMZ firewall. Good thing we know our way around vyos...\
+Wow, that was a lot just for the first deliverable. The professor gave those to us, so the next ones are on our own. We have to figure out how to append rule 10 to the WAN-to-DMZ firewall. Good thing we know our way around vyos...
+
 Here are the commands:
 
 configure\
@@ -37,3 +38,14 @@ The failure was due to another firewall, since the connection was stopped on the
 
 So we are gonna add a little bit more, now. Repeat after me:
 
+configure\
+set firewall name DMZ-to-WAN rule 1 action accept\
+set firewall name DMZ-to-WAN rule 1 state established enable\
+set firewall name DMZ-to-WAN default-action drop\
+set firewall name DMZ-to-WAN enable-default-log\
+set interfaces ethernet eth1 firewall out name DMZ-to-WAN\
+commit\
+save\
+exit
+
+Okay, now for the moment of truth... let's see if this works!
