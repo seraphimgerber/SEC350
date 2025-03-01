@@ -40,10 +40,18 @@ So we are gonna add a little bit more, now. Repeat after me:
 
 configure\
 set firewall name DMZ-to-WAN rule 1 action accept\
+set firewall name DMZ-to-WAN rule 1 description "Allow established HTTP back from DMZ to WAN"\
 set firewall name DMZ-to-WAN rule 1 state established enable\
 set firewall name DMZ-to-WAN default-action drop\
 set firewall name DMZ-to-WAN enable-default-log\
 set interfaces ethernet eth1 firewall out name DMZ-to-WAN\
+commit\
+set firewall name WAN-to-DMZ rule 20 action accept\
+set firewall name WAN-to-DMZ rule 20 description "Allow DNS from WAN to DMZ"\
+set firewall name WAN-to-DMZ rule 20 destination port 53\
+set firewall name WAN-to-DMZ rule 20 protocol udp\
+commit\
+set protocols static route 172.16.50.0/29 next-hop 172.16.50.2\
 commit\
 save\
 exit
@@ -63,6 +71,7 @@ save\
 exit
 
 Now the zones.
+
 set zone-policy zone DMZ from LAN firewall name LAN-to-DMZ\
 set zone-policy zone LAN from DMZ firewall name DMZ-to-LAN\
 set zone-policy zone DMZ interface eth1\
