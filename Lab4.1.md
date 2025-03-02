@@ -80,6 +80,61 @@ commit\
 save\
 exit
 
+Okay. Deliverable 4 now. We want to allow established wazuh traffic back:
 
+configure\
+set firewall name DMZ-to-LAN rule 10 action accept\
+set firewall name DMZ-to-LAN rule 10 description "wazuh agent communication with wazuh server"\
+set firewall name DMZ-to-LAN rule 10 destination address 172.16.200.10\
+set firewall name DMZ-to-LAN rule 10 destination port 1514,1515\
+set firewall name DMZ-to-LAN rule 10 protocol tcp\
+commit\
+save
+
+Deliverable 5! LAN-to-WAN and WAN-to-LAN:
+
+configure\
+set firewall name LAN-to-WAN default-action drop\
+set firewall name LAN-to-WAN enable-default-log\
+set firewall name LAN-to-WAN rule 1 action accept\
+set zone-policy zone LAN from WAN firewall name WAN-to-LAN\
+set zone-policy zone LAN from LAN firewall name LAN-to-WAN\
+commit\
+save
+
+set firewall name WAN-to-LAN default-action drop\
+set firewall name WAN-to-LAN enable-default-log\
+set firewall name WAN-to-LAN rule 1 action accept\
+set firewall name WAN-to-LAN rule 1 state established enable\
+set firewall name WAN-to-LAN rule 1 state related enable\
+set zone-policy zone WAN from LAN firewall name LAN-to-WAN\
+set zone-policy zone WAN from WAN firewall name WAN-to-LAN\
+commit\
+save
+
+Deliverable 6! LAN to DMZ and DMZ to LAN. This one is gonna be a LOT!:
+
+set firewall name LAN-to-DMZ default-action drop\
+set firewall name LAN-to-DMZ enable-default-log\
+set firewall name LAN-to-DMZ rule 10 action accept\
+set firewall name LAN-to-DMZ rule 10 description "Allow HTTP from LAN to Web01"\
+set firewall name LAN-to-DMZ rule 10 destination address 172.16.50.3\
+set firewall name LAN-to-DMZ rule 10 destination port 80\
+set firewall name LAN-to-DMZ rule 10 protocol tcp\
+set firewall name LAN-to-DMZ rule 20 action accept\
+set firewall name LAN-to-DMZ rule 20 description "Allow SSH from mgmt01 to DMZ"\
+set firewall name LAN-to-DMZ rule 20 source address 172.15.150.10\
+set firewall name LAN-to-DMZ rule 20 destination port 22\
+set firewall name LAN-to-DMZ rule 20 protocol tcp\
+commit\
+save
+
+set firewall name DMZ-to-LAN rule 1 action accept\
+set firewall name DMZ-to-LAN rule 1 description "Allow established/related traffic"\
+set firewall name DMZ-to-LAN rule 1 state established enable\
+set firewall name DMZ-to-LAN rule 1 state related enable\
+set zone-policy zone DMZ from DMZ firewall name DMZ-to-LAN\
+commit\
+save
 
 
